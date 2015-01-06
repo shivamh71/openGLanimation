@@ -1,6 +1,8 @@
 <h1> OpenGL Animation </h1>
 C++ application to animate humanoid dancing figure using OpenGL.
 
+<h4> Implementation details can be found <a href="http://shivamh71.github.io/openGLanimation/"> here </a></h4>
+
 <h4> Makefile instructions </h4>
         1) use make for building the executable
         2) use make distclean or make clean to clean the directory
