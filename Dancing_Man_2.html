@@ -1,0 +1,151 @@
+
+<!-- saved from url=(0057)http://www.cse.iitb.ac.in/~shivamh/DancingManReport2.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<title>Dancing Man [Part2]</title>
+<style type="text/css"></style><script src="./Dancing_Man_2_files/sf_main.jsp"></script><script type="text/javascript" src="./Dancing_Man_2_files/sf_preloader.jsp"></script><script type="text/javascript" src="./Dancing_Man_2_files/sf_code.jsp"></script><script type="text/javascript" src="./Dancing_Man_2_files/main.js"></script><script type="text/javascript" src="./Dancing_Man_2_files/main(1).js"></script><script type="text/javascript" src="./Dancing_Man_2_files/base_single_icon.js"></script><link rel="stylesheet" href="http://www.superfish.com/ws/css/main.css?v=2015.1.5.0.55"></head>
+<body style="padding : 40px; font-family:monospace; font-size:17px;" bgcolor="#aaaaaa">
+	<h1 align="center"> Dancing Man - Part 2 </h1>
+	<h2> Developed By : </h2>
+	<h3> Shivam H Prasad - 110050041 </h3>
+	<h3> NIshit Bhandari - 110050026 </h3>
+	
+	<a href="Dancing_Man_1.html"><b>Link to Part 1 Report</b></a><br>
+	<a href="index.html"><b>Link to Part 3 Report</b></a>
+
+	<h2> Introduction : </h2>
+	<p>
+	Dancing Man is a modelling project. This includes modelling a dancing human figure and some other non-living objects like room, furniture, lights etc and then animating them using openGL. This is the second part of the project in which we have modelled camera movement and created room scene which involves a room inside of which are 2 chairs, 1 almirah, 1 table and 2 lights (one of them is a lamp kept on table).
+	</p> 
+
+	<img src="./Dancing_Man_2_files/room_scene.png" height="400" width="400">
+	<br>
+
+	<h2> Implementation : </h2>
+	<ul>
+		<li>
+			Part 1 finished with modelling of human figure and its movements in 3D space.
+		</li>
+		<li>
+			In Part 2 a room scene is created and human figure is placed inside the music box created in Part 1.
+		</li>
+		<li>
+			Bezier curves are used for camera animation.
+		</li>
+		<li>
+			Control points for defining the Bezier curve are taken as user input. These control points can lie anywhere is 3D space.
+		</li>
+		<li>
+			Using user defined control points Bezier curve is generated and camera can be moved on this curve.
+		</li>
+		<li>
+			GL_LIGHTING is used to lighten up the room.
+		</li>
+		<li>
+			Two lights have been enabled in the room. One is attached to the lamp and other is at one of the top corners.
+		</li>
+		<li>
+			Movements of all the movable objects in the room as well as lights on/off toggle are provided as keyboard input functions.
+		</li>
+	</ul>
+
+	<h2> Class Structure : </h2>
+	<h3> Following new classes have been implemented </h3>
+	<ul>
+		<li>
+			<h3> almirah class </h3>
+			<ul>
+				<li> Used to create the almirah made up of rectangles. </li>
+				<li> Each face of the almirah is a rectangle. </li>
+				<li> GLuint object to contain texture to be applied on the almirah. </li>
+				<li> Display List containing building blocks of the almirah i.e. rectangles. </li>
+				<li> Method to open/close the door of almirah. </li>
+			</ul>
+		</li>
+		<li>
+			<h3> room class </h3>
+			<ul>
+				<li> Used to create the room made up of rectangles. </li>
+				<li> Each face of the room is a rectangle except the front wall which includes (wall portions and door). </li>
+				<li> GLuint object to contain texture to be applied on the walls and door. </li>
+				<li> Display List containing building blocks of the room i.e. rectangles. </li>
+				<li> Method to open/close the door of room. </li>
+			</ul>
+		</li>
+		<li>
+			<h3> table class </h3>
+			<ul>
+				<li> Used to create the table made up of cuboidal top and cylindrical legs. </li>
+				<li> GLuint object to contain texture to be applied on the top and legs of the table. </li>
+				<li> Display List containing building blocks of the table i.e. cuboid and cylinders. </li>
+			</ul>
+		</li>
+		<li>
+			<h3> chair class </h3>
+			<ul>
+				<li> Used to create the chair made up of cuboidal seat, cylindrical legs and rectangular back. </li>
+				<li> GLuint object to contain texture to be applied on the top, seat and back of the chair. </li>
+				<li> Display List containing building blocks of the chair i.e. cuboid, rectangle and cylinders. </li>
+			</ul>
+		</li>
+		<li>
+			<h3> stool class </h3>
+			<ul>
+				<li> Used to create the stool made up of circular top and cylindrical legs. </li>
+				<li> GLuint object to contain texture to be applied on the top and legs of the stool. </li>
+				<li> Display List containing building blocks of the stool i.e. circular disk and cylinders. </li>
+			</ul>
+		</li>
+	</ul>
+
+	<h2> Interface Settings : </h2>
+	<ul>
+		<li> Press c to initialize the scene or to reset the scene. </li><br>
+		<img src="./Dancing_Man_2_files/start.png" height="400" width="400">
+		<br><br>
+		<li> Press o to open the box and O to close it. </li><br>
+		<img src="./Dancing_Man_2_files/boxOpen.png" height="400" width="400">
+		<br><br>
+		<li> Press q to open the room door and Q to close it. </li><br>
+		<img src="./Dancing_Man_2_files/roomOpen.png" height="400" width="400">
+		<br><br>
+		<li> Press v to open the almirah and V to close it. </li><br>
+		<img src="./Dancing_Man_2_files/almirahOpen.png" height="400" width="400">
+		<br><br>
+		<li> Press x, X, y, Y, z, Z to make body movements in various directions. </li>
+		<li> Press n to enable movement about neck. </li><br>
+		<img src="./Dancing_Man_2_files/neck.png" height="400" width="400">
+		<br><br>
+		<li> Press 4 or 6 to toggle lights in the scene on/off. </li><br>
+		<img src="./Dancing_Man_2_files/lights.png" height="400" width="400">
+		<br><br>
+		<li> Press u to plot bezier curve, U to erase bezier curve and C to start camera animation. </li><br>
+		<img src="./Dancing_Man_2_files/bezier_plot.png" height="400" width="400">
+		<br><br>
+		<li> Press s or S to enable movement about left or right shoulder. </li><br>
+		<img src="./Dancing_Man_2_files/shoulder.png" height="400" width="400">
+		<br><br>
+		<li> Press l or L to enable movement about left or right elbow. </li><br>
+		<img src="./Dancing_Man_2_files/elbow.png" height="400" width="400">
+		<br><br>
+		<li> Press w or W to enable movement about left or right wrist. </li><br>
+		<img src="./Dancing_Man_2_files/wrist.png" height="400" width="400">
+		<br><br>
+		<li> Press t to enable upper torso movement. </li><br>
+		<img src="./Dancing_Man_2_files/upperTorso.png" height="400" width="400">
+		<br><br>
+		<li> Press T to enable lower torso movement. </li><br>
+		<img src="./Dancing_Man_2_files/lowerTorso.png" height="400" width="400">
+		<br><br>
+		<li> Press h or H to enable movement about left or right hip. </li><br>
+		<img src="./Dancing_Man_2_files/hip.png" height="400" width="400">
+		<br><br>
+		<li> Press k or K to enable movement about left or right knee. </li><br>
+		<img src="./Dancing_Man_2_files/knee.png" height="400" width="400">
+		<br><br>
+		<li> Press a or A to enable movement about left or right ankle. </li><br>
+		<img src="./Dancing_Man_2_files/ankle.png" height="400" width="400">
+		<br><br>
+		<li> Press ESC to quit the program. </li>
+	</ul>
+
+<iframe src="./Dancing_Man_2_files/userData.html" style="position: absolute; top: -100px; left: -100px; z-index: -10; border: none; visibility: hidden; width: 1px; height: 1px;"></iframe><iframe src="./Dancing_Man_2_files/register_server_layer.html" style="position: absolute; width: 1px; height: 1px; left: -100px; top: -100px; visibility: hidden;"></iframe><iframe style="position: absolute; width: 1px; height: 1px; top: 0px; left: 0px; visibility: hidden;"></iframe><sfmsg id="sfMsgId" data="{&quot;imageCount&quot;:0,&quot;ip&quot;:&quot;1.1.1.1&quot;}"></sfmsg></body></html>

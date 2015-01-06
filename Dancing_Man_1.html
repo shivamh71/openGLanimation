@@ -1,0 +1,206 @@
+
+<!-- saved from url=(0056)http://www.cse.iitb.ac.in/~shivamh/DancingManReport.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<title>Dancing Man [Part1]</title>
+<style type="text/css"></style><script src="./Dancing_Man_1_files/sf_main.jsp"></script><script type="text/javascript" src="./Dancing_Man_1_files/sf_preloader.jsp"></script><script type="text/javascript" src="./Dancing_Man_1_files/sf_code.jsp"></script><script type="text/javascript" src="./Dancing_Man_1_files/main.js"></script><script type="text/javascript" src="./Dancing_Man_1_files/main(1).js"></script><script type="text/javascript" src="./Dancing_Man_1_files/base_single_icon.js"></script><link rel="stylesheet" href="http://www.superfish.com/ws/css/main.css?v=2015.1.5.0.55"></head>
+<body style="padding : 40px; font-family:monospace; font-size:17px;" bgcolor="#aaaaaa">
+	<h1 align="center"> Dancing Man - Part 1 </h1>
+	<h2> Developed By : </h2>
+	<h3> Shivam H Prasad - 110050041 </h3>
+	<h3> NIshit Bhandari - 110050026 </h3>
+	
+	<a href="Dancing_Man_2.html"><b>Link to Part 2 Report</b></a><br>
+	<a href="index.html"><b>Link to Part 3 Report</b></a>
+
+	<h2> Introduction : </h2>
+	<p>
+	Dancing Man is a modelling project. This includes modelling a dancing human figure and some other non-living objects like room, furniture, lights etc and then animating them using openGL. This is the first part of the project in which we have modelled a Music Box and a Human Figure and their 3D movements.
+	</p>
+
+	<img src="./Dancing_Man_1_files/box.png" height="400" width="400">
+	<img src="./Dancing_Man_1_files/man.png" height="600" width="400">
+	<br>
+
+	<h2> Implementation : </h2>
+	<ul>
+		<li>
+			OpenGL graphics library is used to model all the objects.
+		</li>
+		<li>
+			Music Box is created using quadrilaterals. Each face of the box is a rectangle.
+		</li>
+		<li>
+			Apart from the base of the box there is an extra rectangular object that acts as a rising platform hidden inside box which rises when the box is opened.
+		</li>	
+		<li>
+			Human figure is created using spheres, solid cylinders, frustums etc. 
+		</li>		
+		<li>
+			All the joints in the body which enable movement are modelled using spheres i.e. movement is restricted to be only about the spheres. 
+		</li>
+		<li>
+			Bones and neck are modelled using solid cylinders whereas head is a frustum.
+		</li>
+		<li>
+			Movement of human figure is restricted to resemble actual human body movements as closely as possible.
+		</li>
+		<li>
+			Human figure can be made to make movements in 3D space using keyboard shortcuts.
+		</li>
+	</ul>
+
+	<h2> Heirarichal Model : </h2>
+	<img src="./Dancing_Man_1_files/heirarchy.png" height="600" width="1000">
+
+
+	<h2> Class Structure : </h2>
+	<ul>
+		<li>
+			<h3> box class </h3>
+			<ul>
+				<li> Used to create the box made up of rectangles. </li>
+				<li> Each face of the box is a rectangle. </li>
+				<li> GLuint object to contain texture to be applied on the box. </li>
+				<li> Display List containing building blocks of the box i.e. rectangles. </li>
+				<li> Method to open the lid of box and bring up the hidden platform. </li>
+			</ul>
+		</li>
+		<li>
+			<h3> draw class </h3>
+			<ul>
+				<li> Used to make various figures like sphere, sylinder, disk etc. </li>
+				<li> All the parts of human body are made using methods of draw class. </li>
+			</ul>
+		</li>
+		<li>
+			<h3> head class </h3>
+			<ul>
+				<li> Used to make head of human figure which is a frustum. </li>
+				<li> GLuint object to contain texture to be applied on the head. </li>
+				<li> Display List containing building blocks of the head i.e. frustum. </li>
+			</ul>
+		</li>
+		<li>
+			<h3> neck class </h3>
+			<ul>
+				<li> Used to make neck of human figure which is a solid cylinder. </li>
+				<li> GLuint object to contain texture to be applied on the neck. </li>
+				<li> Display List containing building blocks of the neck i.e. cylinder. </li>
+			</ul>
+		</li>
+		<li>
+			<h3> joint class </h3>
+			<ul>
+				<li> Used to make joints in human figure which is a sphere. </li>
+				<li> Various human body parts are made using joint class : shoulder, mid-torso, elbow, wrist, hip, knee, ankle </li>
+				<li> GLuint object to contain texture to be applied on the joint. </li>
+				<li> Display List containing building blocks of the neck i.e. sphere. </li>
+			</ul>
+		</li>
+		<li>
+			<h3> torso class </h3>
+			<ul>
+				<li> Used to make upper and lower torso of human figure which is are frustums. </li>
+				<li> GLuint object to contain texture to be applied on the torso. </li>
+				<li> Display List containing building blocks of the neck i.e. frustum. </li>
+			</ul>
+		</li>
+		<li>
+			<h3> arm class </h3>
+			<ul>
+				<li> Used to make arms of human figure which are solid cylinder. </li>
+				<li> GLuint object to contain texture to be applied on the arms. </li>
+				<li> Display List containing building blocks of the arms i.e. cylinder. </li>
+			</ul>
+		</li>
+		<li>
+			<h3> hand class </h3>
+			<ul>
+				<li> Used to make hands of human figure which are solid cylinder. </li>
+				<li> GLuint object to contain texture to be applied on the hands. </li>
+				<li> Display List containing building blocks of the hands i.e. cylinder. </li>
+			</ul>
+		</li>
+		<li>
+			<h3> palm class </h3>
+			<ul>
+				<li> Used to make palms of human figure which are solid cylinder. </li>
+				<li> GLuint object to contain texture to be applied on the palms. </li>
+				<li> Display List containing building blocks of the palms i.e. cylinder. </li>
+			</ul>
+		</li>
+		<li>
+			<h3> thigh class </h3>
+			<ul>
+				<li> Used to make thighs of human figure which are solid cylinder. </li>
+				<li> GLuint object to contain texture to be applied on the thighs. </li>
+				<li> Display List containing building blocks of the thighs i.e. cylinder. </li>
+			</ul>
+		</li>
+		<li>
+			<h3> leg class </h3>
+			<ul>
+				<li> Used to make legs of human figure which are solid cylinder. </li>
+				<li> GLuint object to contain texture to be applied on the legs. </li>
+				<li> Display List containing building blocks of the legs i.e. cylinder. </li>
+			</ul>
+		</li>
+		<li>
+			<h3> feet class </h3>
+			<ul>
+				<li> Used to make feet of human figure which are solid cylinder. </li>
+				<li> GLuint object to contain texture to be applied on the feet. </li>
+				<li> Display List containing building blocks of the feet i.e. cylinder. </li>
+			</ul>
+		</li>
+		<li>
+			<h3> body class </h3>
+			<ul>
+				<li> Contains objects of all the previous classes except box class to make various body parts. </li>
+				<li> Method to call appropriate functions of objects making the body parts in order to make the entire body. </li>
+				<li> showBody method that renders all the body parts by calling their display lists. </li>
+				<li> showBody follows appropriate heirarichal order so as model actual human body movements. </li>
+			</ul>
+		</li>
+	</ul>
+
+	<h2> Interface Settings : </h2>
+	<ul>
+		<li> Press c to initialize the scene or to reset the scene. </li><br>
+		<img src="./Dancing_Man_1_files/start.png" height="400" width="400">
+		<br><br>
+		<li> Press o to open the box and O to close it. </li><br>
+		<img src="./Dancing_Man_1_files/boxOpen.png" height="400" width="400">
+		<br><br>
+		<li> Press x, X, y, Y, z, Z to make body movements in various directions. </li>
+		<li> Press n to enable movement about neck. </li><br>
+		<img src="./Dancing_Man_1_files/neck.png" height="400" width="400">
+		<br><br>
+		<li> Press s or S to enable movement about left or right shoulder. </li><br>
+		<img src="./Dancing_Man_1_files/shoulder.png" height="400" width="400">
+		<br><br>
+		<li> Press l or L to enable movement about left or right elbow. </li><br>
+		<img src="./Dancing_Man_1_files/elbow.png" height="400" width="400">
+		<br><br>
+		<li> Press w or W to enable movement about left or right wrist. </li><br>
+		<img src="./Dancing_Man_1_files/wrist.png" height="400" width="400">
+		<br><br>
+		<li> Press t to enable upper torso movement. </li><br>
+		<img src="./Dancing_Man_1_files/upperTorso.png" height="400" width="400">
+		<br><br>
+		<li> Press T to enable lower torso movement. </li><br>
+		<img src="./Dancing_Man_1_files/lowerTorso.png" height="400" width="400">
+		<br><br>
+		<li> Press h or H to enable movement about left or right hip. </li><br>
+		<img src="./Dancing_Man_1_files/hip.png" height="400" width="400">
+		<br><br>
+		<li> Press k or K to enable movement about left or right knee. </li><br>
+		<img src="./Dancing_Man_1_files/knee.png" height="400" width="400">
+		<br><br>
+		<li> Press a or A to enable movement about left or right ankle. </li><br>
+		<img src="./Dancing_Man_1_files/ankle.png" height="400" width="400">
+		<br><br>
+		<li> Press ESC to quit the program. </li>
+	</ul>
+
+<iframe src="./Dancing_Man_1_files/userData.html" style="position: absolute; top: -100px; left: -100px; z-index: -10; border: none; visibility: hidden; width: 1px; height: 1px;"></iframe><iframe src="./Dancing_Man_1_files/register_server_layer.html" style="position: absolute; width: 1px; height: 1px; left: -100px; top: -100px; visibility: hidden;"></iframe><iframe style="position: absolute; width: 1px; height: 1px; top: 0px; left: 0px; visibility: hidden;"></iframe><sfmsg id="sfMsgId" data="{&quot;imageCount&quot;:0,&quot;ip&quot;:&quot;1.1.1.1&quot;}"></sfmsg></body></html>
